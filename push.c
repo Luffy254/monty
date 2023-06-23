@@ -4,46 +4,24 @@
 /**
  * push - pushes an element to the stack
  * @stack: double pointer to head of stack
+ * @value: value to be pushed onto the stack
  * @line_number: line in monty byte code
- * @argument: pointer to value of new node
  *
  * Return: nothing
  */
 
-void push(stack_t **stack, unsigned int line_number, char *argument)
+void push(stack_t **stack, int value, unsigned int line_number)
 {
-	int i = 0;
-	int element;
-	stack_t *new_node;
-
-	if (argument == NULL)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
-	if (argument[0] == '-' || argument[0] == '+')
-		i = 1;
-	for (; argument[i] != '\0'; i++)
-	{
-		if (argument[i] < '0' || argument[i] > '9')
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-	}
-
-	element = atoi(argument);
-
-	new_node = malloc(sizeof(stack_t));
+	stack_t *new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
-	new_node->n = element;
+	new_node->n = value;
 	new_node->prev = NULL;
 	new_node->next = *stack;
 
