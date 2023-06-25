@@ -41,7 +41,7 @@ void proces_inst(char *instruction, unsigned int line_number, stack_t **stack)
 	}
 	else if (strcmp(instruction, "swap") == 0)
 	{
-		pop(stack, line_number);
+		swap(stack, line_number);
 	}
 	else
 	{
