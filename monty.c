@@ -39,6 +39,10 @@ void proces_inst(char *instruction, unsigned int line_number, stack_t **stack)
 	{
 		pop(stack, line_number);
 	}
+	else if (strcmp(instruction, "swap") == 0)
+	{
+		pop(stack, line_number);
+	}
 	else
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruction);
