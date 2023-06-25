@@ -10,7 +10,7 @@
  * Return: nothing
  */
 
-void push(stack_t **stack, int value, unsigned int line_number)
+void push(stack_t **stack, int value, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
 
