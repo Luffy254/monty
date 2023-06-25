@@ -1,8 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
 
-stack_t *stack;
-
 /**
  * proces_inst - process a single instruction
  * @instruction: the instruction to process
@@ -32,6 +30,10 @@ void proces_inst(char *instruction, unsigned int line_number, stack_t **stack)
 	else if (strcmp(instruction, "pall") == 0)
 	{
 		pall(stack, line_number);
+	}
+	else if (strcmp(instruction, "pint") == 0)
+	{
+		pint(stack, line_number);
 	}
 	else
 	{
@@ -66,6 +68,7 @@ void free_stack(stack_t *stack)
 
 void parse_file(FILE *file)
 {
+	stack_t *stack = NULL;
 	char *line = NULL;
 	size_t line_len = 0;
 	unsigned int line_number = 0;
