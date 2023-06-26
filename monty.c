@@ -2,6 +2,28 @@
 #include <stdio.h>
 
 /**
+ * push_ins - pushes a value onto the stack
+ * @stack: double pointer to the stack
+ * @line_number: line number of the push instruction
+ * @value_str: string representation of the value to be pushed
+ *
+ * Return: nothing
+ */
+
+void push_ins(stack_t **stack, unsigned int line_number, char *value_str)
+{
+	int value;
+
+	if (value_str == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	value = atoi(value_str);
+	push(stack, value, line_number);
+}
+
+/**
  * proces_inst - process a single instruction
  * @instruction: the instruction to process
  * @line_number: the current line number
@@ -12,20 +34,11 @@
 
 void proces_inst(char *instruction, unsigned int line_number, stack_t **stack)
 {
-	int value;
-
 	if (strcmp(instruction, "push") == 0)
 	{
 		char *value_str = strtok(NULL, " \t\n");
 
-		if (value_str == NULL)
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-		value = atoi(value_str);
-
-		push(stack, value, line_number);
+		push_ins(stack, line_number, value_str);
 	}
 	else if (strcmp(instruction, "pall") == 0)
 	{
@@ -46,6 +59,14 @@ void proces_inst(char *instruction, unsigned int line_number, stack_t **stack)
 	else if (strcmp(instruction, "add") == 0)
 	{
 		add(stack, line_number);
+	}
+	else if (strcmp(instruction, "nop") == 0)
+	{
+		nop(stack, line_number);
+	}
+	else if (strcmp(instruction, "sub") == 0)
+	{
+		sub(stack, line_number);
 	}
 	else
 	{

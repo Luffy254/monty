@@ -39,6 +39,7 @@ typedef struct instruction_s
 
 extern stack_t *stack;
 
+void push_ins(stack_t **stack, unsigned int line_number, char *value_str);
 void proces_inst(char *instruction, unsigned int line_number, stack_t **stack);
 void free_stack(stack_t *stack);
 void parse_file(FILE *file);
@@ -49,5 +50,6 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 
 #endif
