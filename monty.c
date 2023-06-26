@@ -41,33 +41,21 @@ void proces_inst(char *instruction, unsigned int line_number, stack_t **stack)
 		push_ins(stack, line_number, value_str);
 	}
 	else if (strcmp(instruction, "pall") == 0)
-	{
 		pall(stack, line_number);
-	}
 	else if (strcmp(instruction, "pint") == 0)
-	{
 		pint(stack, line_number);
-	}
 	else if (strcmp(instruction, "pop") == 0)
-	{
 		pop(stack, line_number);
-	}
 	else if (strcmp(instruction, "swap") == 0)
-	{
 		swap(stack, line_number);
-	}
 	else if (strcmp(instruction, "add") == 0)
-	{
 		add(stack, line_number);
-	}
 	else if (strcmp(instruction, "nop") == 0)
-	{
 		nop(stack, line_number);
-	}
 	else if (strcmp(instruction, "sub") == 0)
-	{
 		sub(stack, line_number);
-	}
+	else if (strcmp(instruction, "div_op") == 0)
+		div_op(stack, line_number);
 	else
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruction);
