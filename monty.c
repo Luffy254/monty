@@ -54,8 +54,10 @@ void proces_inst(char *instruction, unsigned int line_number, stack_t **stack)
 		nop(stack, line_number);
 	else if (strcmp(instruction, "sub") == 0)
 		sub(stack, line_number);
-	else if (strcmp(instruction, "div_op") == 0)
-		div_op(stack, line_number);
+	else if (strcmp(instruction, "div") == 0)
+		_div(stack, line_number);
+	else if (strcmp(instruction, "mul") == 0)
+		mul(stack, line_number);
 	else
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, instruction);
